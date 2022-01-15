@@ -3,26 +3,26 @@
  */
 
 function calcScore(time, parTime, level){
- // var time = .5;
- // var parTime = 1.5;
- // var level = 10;
+  //var time = 1.1;
+  //var parTime = 1;
+  //var level = 15;
   if (level == 0){
     return 0;
   }
-  var timeFactor = (parTime-time)/parTime/.4
+  var timeFactor = (parTime-time)/parTime/.4;
   var scoreTable = SpreadsheetApp.getActiveSpreadsheet().getRangeByName("ScoreTable").getValues();
   var baseScore = scoreTable[level-2][1];
   var score;
   if (timeFactor < -1){
     score = 0;
-  } else if (-1 <= timeFactor < 0){
-    score = baseScore + 15 * timeFactor;
-  } else if (1 >= timeFactor >= 0){
-    score = baseScore + 7.5 * timeFactor;
+  } else if (-1 <= timeFactor && timeFactor < 0){
+    score = baseScore - 5 + (5 * timeFactor);
+  } else if (1 >= timeFactor && timeFactor >= 0){
+    score = baseScore + 5 * timeFactor;
   } else if (timeFactor > 1){
-    score = baseScore + 7.5;
+    score = baseScore + 5;
   } 
-  return score/1.5; //normalize
+  return score; //returns in terms of RIO score, not M+ rating!
 }
 
 function sortScores(dungeon, affix, playerNum, date){
