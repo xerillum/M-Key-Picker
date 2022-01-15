@@ -1,2 +1,2 @@
 # M-Key-Picker
-Tool to pick which M+ Key your group should run
+Google Sheets tool to pick which M+ Key your group should run
